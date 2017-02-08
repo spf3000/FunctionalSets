@@ -58,7 +58,7 @@ object FunSets {
       for (i <- -bound to bound)  if (contains(s, i) && !p(i) ) return false
        true
   }
-  // comment
+  // comment1
   /**
    * Returns whether there exigitsts a bounded integer within `s`
    * that satisfies `p`.
