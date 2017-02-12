@@ -20,7 +20,6 @@ object FunSets {
    * Returns the set of the one given element.
    */
     def singletonSet(elem: Int): Set =  Set(elem)
-  
 
   /**c
    * Returns the union of the two given sets,
@@ -33,14 +32,13 @@ object FunSets {
    * the set of all elements that are both in `s` and `t`.
    */
     def intersect(s: Set, t: Set): Set = x => if (contains(s,x) && contains(t,x)) true else false
-      //filter(s, elem =>  contains(t , elem))
+
   /**
    * Returns the difference of the two given sets,
    * the set of all elements of `s` that are not in `t`.
    */
     def diff(s: Set, t: Set): Set =  x => if (contains(s,x) && !contains(t,x)) true else false
-      //filter(union(s,t), elem => !contains(intersect(s,t) , elem))
-  
+
   /**
    * Returns the subset of `s` for which `p` holds.
    */
@@ -58,7 +56,7 @@ object FunSets {
       for (i <- -bound to bound)  if (contains(s, i) && !p(i) ) return false
        true
   }
-  // comment1
+
   /**
    * Returns whether there exigitsts a bounded integer within `s`
    * that satisfies `p`.
@@ -71,15 +69,9 @@ object FunSets {
   /**
    * Returns a set transformed by applying `f` to each element of `s`.
    */
-    def map(s: Set, f: Int => Int): Set = {
-      val xs = for (i <- -bound to bound if (contains(s,i) ) ) yield Set(f(i))
-      def loop(sets: IndexedSeq[Set], theSet: Set): Set ={
-        if (sets.isEmpty) theSet
-        else loop(sets.tail,union(sets.head, theSet))
-      }
-      loop(xs, Set())
-    }
-  
+
+    def map(s: Set, f: Int => Int): Set =  x => exists( s, a => f(a) == x )
+
   /**
    * Displays the contents of a set
    */
